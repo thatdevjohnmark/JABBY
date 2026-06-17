@@ -1,0 +1,17 @@
+{
+  "name": "Pipeline Job Application Tracker",
+  "short_name": "Pipeline",
+  "description": "A minimalist job application tracker to manage your hiring pipeline.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#3454d1",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1063/1063376.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

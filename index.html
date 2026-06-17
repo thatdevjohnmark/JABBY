@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#3454d1" />
+<link rel="manifest" href="manifest.json" />
 <title>Pipeline — Job Application Tracker</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -706,6 +708,8 @@ function importData(event) {
       const data = JSON.parse(reader.result);
       if (!Array.isArray(data)) throw new Error("Invalid format");
       applications = data;
+      localStorage.setItem('pipeline_apps', JSON.stringify(applications));
+      localStorage.setItem('pipeline_apps', JSON.stringify(applications));
       renderAll();
     } catch (err) {
       alert("That file couldn't be read as a Pipeline export. Make sure it's an unedited JSON file from Export.");
@@ -719,6 +723,17 @@ function importData(event) {
    INIT
 ============================================================ */
 setView("board");
+
+/* ============================================================
+   PWA SERVICE WORKER REGISTRATION
+============================================================ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registered'))
+      .catch(err => console.log('Service Worker registration failed', err));
+  });
+}
 </script>
 </body>
 </html>
